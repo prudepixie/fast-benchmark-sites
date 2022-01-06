@@ -1,0 +1,19 @@
+{
+  "name": "@microsoft/fast-benchmark-sites",
+  "version": "1.0.0",
+  "description": "benchmarking utility package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prudepixie/fast-benchmark-sites.git"
+  },
+  "author": "Microsoft",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prudepixie/fast-benchmark-sites/issues"
+  },
+  "homepage": "https://github.com/prudepixie/fast-benchmark-sites#readme"
+}
