@@ -1,10 +1,12 @@
 {
-  "name": "@microsoft/fast-benchmark-sites",
+  "name": "fast-benchmark-sites",
   "version": "1.0.0",
   "description": "benchmarking utility package",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "surge --domain fastbenchmarks.surge.sh",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/prudepixie/fast-benchmark-sites/issues"
   },
-  "homepage": "https://github.com/prudepixie/fast-benchmark-sites#readme"
+  "homepage": "https://github.com/prudepixie/fast-benchmark-sites#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0"
+  },
+  "engines": {
+    "node": "16.x"
+  }
 }

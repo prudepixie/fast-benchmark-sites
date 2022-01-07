@@ -1,0 +1,1 @@
+console.log('template compilation js file')
