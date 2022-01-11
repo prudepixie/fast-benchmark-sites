@@ -1,19 +1,16 @@
-// const express = require('express')
-
 import express from 'express'
 const app = express();
 const port = 8080;
-// const routes = require('./routes.cjs')
-import router from "./routes.js"
-
+import router from "./api/routes.js"
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-app.use(express.static(__dirname + '/benchmarks'))
+app.set('views', '/benchmarks')
+app.set('view engine', 'ejs')
+// app.use(express.static(__dirname + '/benchmarks'))
 app.use('/', router)
 
 app.listen(process.env.PORT || port, () => {
