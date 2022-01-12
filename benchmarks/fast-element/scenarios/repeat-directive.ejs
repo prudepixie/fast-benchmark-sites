@@ -1,1 +1,41 @@
-<h1>Repeat Directive Test</h1>
+<html>
+
+<body>
+    <h1>
+        <%-scenarioName-%>
+    </h1>
+    <script type="module">
+        import { repeat, html, defaultExecutionContext } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+
+        const itemTemplate = html`<li>${x => x.name}`;
+
+        class ViewModel {
+            name = "root";
+            items = [{ name: 'apple' }, { name: 'oranges' }, { name: 'pear' }];
+            template = itemTemplate;
+
+        }
+
+        function createLocation() {
+            const parent = document.createElement("div");
+            const location = document.createComment("");
+
+            parent.appendChild(location);
+
+            return { parent, location };
+        }
+
+        const directive = repeat(
+            x => x.items,
+            itemTemplate
+        )
+        const { parent, location } = createLocation();
+        const behavior = directive.createBehavior(location);
+
+        const vm = new ViewModel();
+        behavior.bind(vm, defaultExecutionContext);
+
+    </script>
+</body>
+
+</html>

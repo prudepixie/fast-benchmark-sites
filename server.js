@@ -1,7 +1,7 @@
 import express from 'express'
+import router from './benchmarks/index.js'
 const app = express();
 const port = 8080;
-import router from './benchmarks/index.js'
 
 app.set('views', '/benchmarks')
 app.set('view engine', 'ejs')

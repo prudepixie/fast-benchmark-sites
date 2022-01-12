@@ -1,10 +1,5 @@
 <html>
 
-<!-- <head>
-    <link rel="prefetch"
-        href="https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js">
-</head> -->
-
 <body>
     <h1>
         <%-scenarioName-%>
@@ -27,7 +22,7 @@
         performance.mark("start")
         compile('beginning end', [binding()])
         performance.mark("end")
-        performance.measure('templateCompilation', "start", "end")
+        performance.measure("<%-scenarioName-%>", "start", "end")
 
         const duration = performance.getEntriesByType("measure")
         console.log('duration', duration)
