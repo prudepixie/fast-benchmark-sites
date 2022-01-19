@@ -1,0 +1,23 @@
+<div id="container">
+    <fast-card></fast-card>
+</div>
+<script type="module">
+    import { FASTElement, html } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+
+    export class Card extends FASTElement { }
+
+    FASTElement.define(Card, {
+        name: "fast-card",
+        template: html`
+        <div id="card">
+            <h1>Card Title</h1>
+            <p>Card Details</p>
+            <hr>
+            <div>
+                <button>Cancel</button>
+                <button>Ok</button>
+            </div>
+        </div>
+    `,
+    });
+</script>
