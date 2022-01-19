@@ -1,41 +1,32 @@
-<html>
+<script type="module">
+    import { repeat, html, defaultExecutionContext } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
 
-<body>
-    <h1>
-        <%-scenarioName-%>
-    </h1>
-    <script type="module">
-        import { repeat, html, defaultExecutionContext } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+    const itemTemplate = html`<li>${x => x.name}`;
 
-        const itemTemplate = html`<li>${x => x.name}`;
+    class ViewModel {
+        name = "root";
+        items = [{ name: 'apple' }, { name: 'oranges' }, { name: 'pear' }];
+        template = itemTemplate;
 
-        class ViewModel {
-            name = "root";
-            items = [{ name: 'apple' }, { name: 'oranges' }, { name: 'pear' }];
-            template = itemTemplate;
+    }
 
-        }
+    function createLocation() {
+        const parent = document.createElement("div");
+        const location = document.createComment("");
 
-        function createLocation() {
-            const parent = document.createElement("div");
-            const location = document.createComment("");
+        parent.appendChild(location);
 
-            parent.appendChild(location);
+        return { parent, location };
+    }
 
-            return { parent, location };
-        }
+    const directive = repeat(
+        x => x.items,
+        itemTemplate
+    )
+    const { parent, location } = createLocation();
+    const behavior = directive.createBehavior(location);
 
-        const directive = repeat(
-            x => x.items,
-            itemTemplate
-        )
-        const { parent, location } = createLocation();
-        const behavior = directive.createBehavior(location);
+    const vm = new ViewModel();
+    behavior.bind(vm, defaultExecutionContext);
 
-        const vm = new ViewModel();
-        behavior.bind(vm, defaultExecutionContext);
-
-    </script>
-</body>
-
-</html>
+</script>
