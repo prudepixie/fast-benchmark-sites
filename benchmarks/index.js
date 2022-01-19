@@ -24,7 +24,7 @@ fs.readdir(__dirname, (err, files) => {
         }
     });
 });
-
+// add error handling for wrong manual input of path
 
 
 
