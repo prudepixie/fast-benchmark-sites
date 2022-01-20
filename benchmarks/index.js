@@ -5,6 +5,7 @@ import fs from 'fs'
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const currentVersion = '1.6.2'
 
 fs.readdir(__dirname, (err, files) => {
     files.forEach(file => {
@@ -15,7 +16,7 @@ fs.readdir(__dirname, (err, files) => {
                 scenarioFiles && scenarioFiles.forEach((scenarioFile) => {
                     const scenarioName = scenarioFile.substr(0, scenarioFile.lastIndexOf('.'))
                     const scenariocb = (req, res) => {
-                        const version = req.query.releaseversion
+                        const version = req.query.releaseversion | currentVersion
                         res.render('index', { version, scenarioName, htmlPath: `${scenariosPath}/${scenarioName}` })
                     }
                     router.get(`/${file}/${scenarioName}`, scenariocb)
