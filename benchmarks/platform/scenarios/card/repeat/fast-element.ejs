@@ -1,5 +1,12 @@
 <div id="container">
-    <fast-card></fast-card>
+    <% for (var i=1; i <=100; i++ ) { %>
+        <div id="card-container">
+            <span>
+                <%= i %>
+            </span>
+            <fast-card></fast-card>
+        </div>
+        <% } %>
 </div>
 <script type="module">
     import { FASTElement, html } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
@@ -9,15 +16,7 @@
     FASTElement.define(Card, {
         name: "fast-card",
         template: html`
-        <div id="card">
-            <h1>Card Title</h1>
-            <p>Card Details</p>
-            <hr>
-            <div>
-                <button>Cancel</button>
-                <button>Ok</button>
-            </div>
-        </div>
+        <%- include('../card-template.ejs') %>
     `,
     });
 </script>

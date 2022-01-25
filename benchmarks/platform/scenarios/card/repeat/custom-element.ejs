@@ -1,8 +1,15 @@
-<div id="container">
-    <teemo-card title="Card Title" details="Card Details"></teemo-card>
+<div>
+    <% for (var i=1; i <=100; i++ ) { %>
+        <div id="card-container">
+            <span>
+                <%= i %>
+            </span>
+            <teemo-card title="Card Title" details="Card Details"></teemo-card>
+        </div>
+        <% } %>
 </div>
-<script>
-    class Card extends HTMLElement {
+<script type="module">
+    export class Card extends HTMLElement {
         constructor() {
             super();
 
