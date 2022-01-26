@@ -1,12 +1,16 @@
 <div id="container">
-    <% for (var i=1; i <=100; i++ ) { %>
+    <% data.forEach(function (user) { -%>
         <div class="card-container">
-            <span>
-                <%= i %>
-            </span>
-            <teemo-card title="Card Title" details="Card Details"></teemo-card>
+            <teemo-card 
+                firstName=<%= user.first_name%> 
+                lastName=<%= user.last_name%> 
+                email=<%= user.email%>
+                gender=<%= user.gender %>
+                ip_address=<%= user.ip_address %>
+                >
+            </teemo-card>
         </div>
-        <% } %>
+    <% }) -%>
 </div>
 <script type="module">
     export class Card extends HTMLElement {
@@ -17,6 +21,8 @@
             const card = document.createElement('div'),
                 header = document.createElement('h1'),
                 paragraph = document.createElement('p'),
+                paragraph2 = document.createElement('p'),
+                paragraph3 = document.createElement('p'),
                 breakLine = document.createElement('hr'),
                 buttonContainer = document.createElement('div'),
                 button1 = document.createElement('button'),
@@ -26,10 +32,13 @@
             button2.textContent = 'Ok'
             buttonContainer.append(button1, button2)
 
-            header.textContent = this.getAttribute('title')
-            paragraph.textContent = this.getAttribute('details')
+            header.textContent = this.getAttribute('firstName') + ' ' + this.getAttribute('lastName')
+            paragraph.textContent = this.getAttribute('email')
+            paragraph2.textContent = this.getAttribute('gender')
+            paragraph3.textContent = this.getAttribute('ip_address')
+
             card.setAttribute('class', 'card')
-            card.append(header, paragraph, breakLine, buttonContainer)
+            card.append(header, paragraph, paragraph2, paragraph3, breakLine, buttonContainer)
 
             this.shadowRoot.append(card)
         }

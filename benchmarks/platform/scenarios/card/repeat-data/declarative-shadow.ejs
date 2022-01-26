@@ -1,0 +1,9 @@
+<div id="container">
+    <% data.forEach(function (user) { -%>
+        <div class="card-container">
+            <template shadowroot="open">
+                <%- include('template', {user}) %>
+            </template>
+        </div>
+    <% }) -%>
+</div>
