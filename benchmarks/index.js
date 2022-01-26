@@ -18,7 +18,6 @@ fs.readdir(__dirname, (err, files) => {
                     const scenariocb = (req, res) => {
                         const { type, prop } = req.query
                         const data = type.includes('data') && mockData
-                        // console.log('d', data)
                         const version = req.query?.releaseversion ? req.query.releaseversion : currentVersion
                         res.render('index', { version, data, htmlPath: `${scenariosPath}/${scenarioFile}/${type}/${prop}` })
                     }

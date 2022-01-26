@@ -2,7 +2,7 @@
     <fast-card></fast-card>
 </div>
 <script type="module">
-    import { FASTElement, html, repeat, observable } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+    import { FASTElement, html, repeat } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
     
     class Card extends FASTElement { 
         data = `<%- JSON.stringify(data) %>`
@@ -12,7 +12,6 @@
         name: "fast-card",
         template: html`
         <div>
-            <h1>hello</h1>
             ${repeat(
             x => JSON.parse(x.data),
             html`
