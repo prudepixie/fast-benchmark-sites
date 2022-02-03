@@ -1,0 +1,24 @@
+<div id="container">
+    <% data.forEach( (user) => { %>
+        <div class="card">
+            <h1>
+                <%= user.first_name %>
+                <%= user.last_name %>
+            </h1>
+            <p>
+                <%= user.email %>
+            </p>
+            <p>
+                <%= user.gender %>
+            </p>
+            <p>
+                <%= user.ip_address %>
+            </p>
+            <hr>
+            <div>
+                <button>Cancel</button>
+                <button>Ok</button>
+            </div>
+        </div>
+    <% }) %>
+</div>

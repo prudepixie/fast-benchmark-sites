@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-    <head>
-        <link rel="preload"
-            href="https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js"
-            as="script" crossOrigin="anonymous" />
-    </head>
+    <% if (preload) { %>
+        <head>
+            <link rel="preload"
+                href="https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js"
+                as="script" crossOrigin="anonymous" />
+        </head>
+    <% } %>
 
     <body>
         <%- include(htmlPath) %>
