@@ -1,0 +1,41 @@
+<div id="container">
+    <fast-card></fast-card>
+</div>
+<script type="module">
+    import { FASTElement, html, repeat } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+    
+    class Card extends FASTElement { 
+        data = `<%- JSON.stringify(data) %>`
+    }
+
+    FASTElement.define(Card, {
+        name: "fast-card",
+        template: html`
+        <div>
+            ${repeat(
+            x => JSON.parse(x.data),
+            html`
+                <div class="card">
+                    <h1>
+                        ${x => x.first_name + ' ' + x.last_name}
+                    </h1>
+                    <p>
+                        ${x => x.email}
+                    </p>
+                    <p>
+                        ${x => x.gender}
+                    </p>
+                    <p>
+                        ${x => x.ip_address}
+                    </p>
+                    <hr>
+                    <div>
+                        <button>Cancel</button>
+                        <button>Ok</button>
+                    </div>
+                </div>
+            `
+        )}</div>
+    `,
+    });
+</script>

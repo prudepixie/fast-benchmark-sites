@@ -1,4 +1,4 @@
-<div id="container">
+<div id="card-container">
     <fast-card></fast-card>
 </div>
 <script type="module">
@@ -9,15 +9,7 @@
     FASTElement.define(Card, {
         name: "fast-card",
         template: html`
-        <div id="card">
-            <h1>Card Title</h1>
-            <p>Card Details</p>
-            <hr>
-            <div>
-                <button>Cancel</button>
-                <button>Ok</button>
-            </div>
-        </div>
+        <%- include('../card-template.ejs') %>
     `,
     });
 </script>

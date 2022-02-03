@@ -1,8 +1,12 @@
 <div id="container">
-    <teemo-card title="Card Title" details="Card Details"></teemo-card>
+    <% for (var i=0; i <100; i++ ) { %>
+        <div class="card-container">
+            <teemo-card title="Card Title" details="Card Details"></teemo-card>
+        </div>
+        <% } %>
 </div>
-<script>
-    class Card extends HTMLElement {
+<script type="module">
+    export class Card extends HTMLElement {
         constructor() {
             super();
 
@@ -21,7 +25,7 @@
 
             header.textContent = this.getAttribute('title')
             paragraph.textContent = this.getAttribute('details')
-            card.setAttribute('id', 'card')
+            card.setAttribute('class', 'card')
             card.append(header, paragraph, breakLine, buttonContainer)
 
             this.shadowRoot.append(card)

@@ -1,0 +1,57 @@
+<!-- static definition -->
+<div id="container">
+    <% data.forEach( (user) => { %>
+        <div class="card-container">
+            <fast-card 
+                first_name=<%= user.first_name%> 
+                last_name=<%= user.last_name%> 
+                email=<%= user.email%>
+                gender=<%= user.gender %>
+                ip_address=<%= user.ip_address %>
+            ></fast-card>
+        </div>
+        <% }) %>
+</div>
+<script type="module">
+    import { FASTElement, html } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+    
+    const template = html`
+        <div class="card">
+            <h1>
+                ${x => x.first_name + ' ' + x.last_name}
+            </h1>
+            <p>
+                ${x => x.email}
+            </p>
+            <p>
+                ${x => x.gender}
+            </p>
+            <p>
+                ${x => x.ip_address}
+            </p>
+            <hr>
+            <div>
+                <button>Cancel</button>
+                <button>Ok</button>
+            </div>
+        </div>`
+    
+    class Card extends FASTElement { 
+        static definition = {
+            name: 'fast-card',
+            template
+        }
+
+        constructor() {
+            super()
+            this.first_name = this.getAttribute('first_name')
+            this.last_name = this.getAttribute('last_name')
+            this.email = this.getAttribute('email')
+            this.gender = this.getAttribute('gender')
+            this.ip_address = this.getAttribute('ip_address')
+        }
+   
+    }
+
+    FASTElement.define(Card);
+</script>

@@ -1,0 +1,23 @@
+<div id="container">
+    <fast-card></fast-card>
+</div>
+<script type="module">
+    import { FASTElement, html, repeat } from "https://cdn.jsdelivr.net/npm/@microsoft/fast-element@<%-version-%>/dist/fast-element.min.js";
+
+    export class Card extends FASTElement {
+        data = Array.from({length: 100}, (v, i) => i) 
+     }
+
+    FASTElement.define(Card, {
+        name: "fast-card",
+        template: html`
+            ${repeat(
+            x => x.data,
+            html`
+            <span>${x=> x}<span>
+              <%- include('../card-template.ejs') %>
+            `
+        )}
+    `,
+    });
+</script>
